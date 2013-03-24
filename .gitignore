@@ -9,4 +9,5 @@
 *.idx
 *.blg
 *.bbl
-
+*.lof
+*.lot
