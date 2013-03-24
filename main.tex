@@ -1,22 +1,20 @@
- % The main file for CAMP reports
- % Don't put any content in here. 
- % Don't even include content files by using \input or \inlcude. 
- % Put your content to TEXT.TEX or include it there using \input.
- % Uses:
- %		SETTINGS.TEX	contains the settings for this document
- %		COMMANDS.TEX	contains commands which can be used while writing
- %		INFO.TEX			contains the author, title and so on for the cover
- %		COVER.TEX			formats the front cover of the document
- %		ABSTRACT.TEX	contains the abstract to be included (if needed)
- %		TEXT.TEX			contains the actual content of the document
- %		BIB.BIB				containt the BibTeX entries for the document
- 
- 
 %% Draft document mode
 %% Final document
-\documentclass[11pt,a4paper,bibtotoc,idxtotoc,headsepline,footsepline,footexclude,BCOR12mm,DIV13]{scrbook}
-
+%\documentclass[11pt,a4paper,bibtotoc,idxtotoc,headsepline,footsepline,footexclude,BCOR12mm,DIV13]{scrbook}
 %\documentclass[11pt,a4paper,bibtotoc,idxtotoc,headsepline,footsepline,footexclude,BCOR20mm,DIV10]{scrbook}
+
+%\documentclass[11pt,a4paper,twoside=false]{scrbook}
+
+\documentclass[11pt,a4paper,bibliography=totoc,index=totoc,headsepline=true,footsepline=true,footinclude=false,twoside=semi,BCOR=0mm,DIV=9]{scrbook}
+
+%\setlength{\oddsidemargin}{-30mm}
+%\setlength{\evensidemargin}{-30mm}
+
+%\usepackage[a4paper,bindingoffset=0mm]{geometry}
+
+%DIV=10
+%BCOR=12mm
+%parskip
 
 % KOMA-Optionen:
 %  bibtotoc: include bibliography in table of contents
@@ -37,82 +35,69 @@
 \input{components/commands}
 
 
-%\makeindex
-	%% inter line spacing
-%\linespread{1.0}
+
+\makeindex
+
+%% inter line spacing
+%\linespread{2.0}
 
 \makeglossary
 
+
 \begin{document}
 
-	\frontmatter
-	
-	
-	\input{components/cover}
-%	\clearemptydoublepage
-%	
-%	\input{components/titlepage}
-	
-	
-%	\input{components/cover_maschmeyer}
-	\clearemptydoublepage
-	
-	\input{components/titlepage}
-	
-	
-	\input{components/disclaimer}
-	
-	\input{components/acknowledgements}
-	
-	\input{components/abstract}
-
-	\tableofcontents
-  
-  \input{components/outline}
-
-	\mainmatter
-	
-	
-		% ---------------------------------------------------------------------------
-		%
-		%Introduction and Background Theory
-		%
-		% ---------------------------------------------------------------------------
-		\part[Introduction and Theory]{Introduction and Theory}
-		\label{part:introAndBackgroundTheory}
-		\input{chapters/Introduction}
-		
-		
-		%
-		%% ---------------------------------------------------------------------------
-		%%
-		%% Fully Automated Calibration for Ultrasound
-		%%
-		%%% ---------------------------------------------------------------------------
-		\part[The 2nd Part]{The Second Part}
-		\label{part:secondP}
-		
-		
-		% ---------------------------------------------------------------------------
-		%
-		% Appendix
-		%
-		% ---------------------------------------------------------------------------
-		
-		\part*{Appendix}
-		\addcontentsline{toc}{part}{Appendix}
-		
-		\appendix %---------------------------------------
-		
-		\input{chapters/oneAppendix}
-		
-	
+\frontmatter
 
 
-  \clearemptydoublepage
-  
-	\bibliography{bibliography/literature}
-	
+\input{components/cover}
+
+\clearemptydoublepage
+
+\input{components/titlepage}
+
+\input{components/disclaimer}
+
+\input{components/acknowledgements}
+
+\input{components/abstract}
+
+\input{components/abstract_german}
+
+\tableofcontents
+\addcontentsline{toc}{chapter}{Contents}
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoftables
+\addcontentsline{toc}{chapter}{List of Tables}
+
+%% remove in final version
+\input{components/outline}
+\input{components/notes}
+
+
+\mainmatter
+
+        \input{chapters/introduction}
+
+		\input{chapters/conclusion}
+		
+
+        \appendix
+        \addcontentsline{toc}{chapter}{Appendix}
+        \addtocontents{toc}{\protect\setcounter{tocdepth}{-1}}
+		
+		\input{chapters/appendix_a}
+
+
+
+
+\clearemptydoublepage
+
+\addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
+
+\bookmarksetup{startatroot}
+
+\bibliography{bibliography/literature}
  
 \end{document}
 

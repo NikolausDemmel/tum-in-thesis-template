@@ -1,29 +1,29 @@
-% Included by MAIN.TEX
-% Defines the settings for the CAMP report document
 
-\renewcommand{\sectfont}{\normalfont \bfseries}        % Schriftart der Kopfzeile
+%\renewcommand{\sectfont}{\normalfont \bfseries}        % Schriftart der Kopfzeile
 
 % manipulate footer
-\usepackage{scrpage2}
-\pagestyle{scrheadings}
-\ifoot[\footertext]{\footertext} % \footertext set in INFO.TEX
+%\usepackage{scrpage2}
+%\pagestyle{scrheadings}
+%\ifoot[\footertext]{\footertext} % \footertext set in INFO.TEX
 %\setkomafont{pagehead}{\normalfont\rmfamily}
-\setkomafont{pagenumber}{\normalfont\rmfamily}
+%\setkomafont{pagenumber}{\normalfont\rmfamily}
 
 %% allow sophisticated control structures
 \usepackage{ifthen}
 
 % use Palatino as default font
-\usepackage{palatino}
+%\usepackage{palatino}
 
 % enable special PostScript fonts
-\usepackage{pifont}
+%\usepackage{pifont}
 
 % make thumbnails
-\usepackage{thumbpdf}
+%% FIXME: what does it do. do i need it?
+%\usepackage{thumbpdf}
 
 %to use the subfigures
-\usepackage{subfigure}
+%\usepackage{subfigure} %superseeded by subfig
+\usepackage[lofdepth,lotdepth]{subfig}
 
 
 \usepackage{colortbl}
@@ -38,6 +38,7 @@
 
 
 \usepackage{multirow}
+\usepackage{longtable}
 
 %% use colors
 \usepackage{color}
@@ -47,7 +48,7 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{textcomp}
-%\usepackage{yhmath} % für die adots 
+%\usepackage{yhmath} %  fuer die adots 
 %% mark text as preliminary
 %\usepackage[draft,german,scrtime]{prelim2e}
 
@@ -63,30 +64,32 @@
 \selectlanguage{english}
 
 % use german characters as well
-\usepackage[latin1]{inputenc}       % allow Latin1 characters
+\usepackage[utf8]{inputenc}
 
 % use initals dropped caps - doesn't work with PDF
 %%%\usepackage{dropping}
 
 
-\usepackage{styles/shortoverview}
+%\usepackage{styles/shortoverview}
 %----------------------------------------------------
 %      Graphics and Hyperlinks
 %----------------------------------------------------
 
-%% check for pdfTeX
-\ifx\pdftexversion\undefined
- %% use PostScript graphics
- \usepackage[dvips]{graphicx}
- \DeclareGraphicsExtensions{.eps,.epsi}
- \graphicspath{{figures/}{figures/review}} 
- %% allow rotations
- \usepackage{rotating}
- %% mark pages as draft copies
- %\usepackage[english,all,light]{draftcopy}
- %% use hypertex version of hyperref
- \usepackage[hypertex,hyperindex=false,colorlinks=false]{hyperref}
-\else %% reduce output size \pdfcompresslevel=9
+% %% check for pdfTeX
+% \ifx\pdftexversion\undefined
+%  %% use PostScript graphics
+%  \usepackage[dvips]{graphicx}
+%  \DeclareGraphicsExtensions{.eps,.epsi}
+%  \graphicspath{{figures/}{figures/review}} 
+%  %% allow rotations
+%  \usepackage{rotating}
+%  %% mark pages as draft copies
+%  %\usepackage[english,all,light]{draftcopy}
+%  %% use hypertex version of hyperref
+%  \usepackage[hypertex,hyperindex=false,colorlinks=false]{hyperref}
+% \else 
+
+ %% reduce output size \pdfcompresslevel=9
  %% declare pdfinfo
  %\pdfinfo { 
  %  /Title (my title) 
@@ -100,26 +103,33 @@
  \DeclareGraphicsExtensions{.jpg,.JPG,.png,.pdf,.eps}
  \graphicspath{{figures/}} 
  
- %% Load float package, for enabling floating extensions
- \usepackage{float}
- 
  %% allow rotations
  \usepackage{rotating}
  %% use pdftex version of hyperref
- \usepackage[pdftex,colorlinks=true,linkcolor=red,citecolor=red,%
- anchorcolor=red,urlcolor=red,bookmarks=true,%
- bookmarksopen=true,bookmarksopenlevel=0,plainpages=false%
- bookmarksnumbered=true,hyperindex=false,pdfstartview=%
- ]{hyperref}
+
+
+
+% not for print version!
+ % \usepackage[pdftex,colorlinks=true,linkcolor=red,citecolor=red,%
+ % anchorcolor=red,urlcolor=red,bookmarks=true,pagebackref,%
+ % bookmarksopen=true,bookmarksopenlevel=0,plainpages=false,%
+ % bookmarksnumbered=true,hyperindex=false,pdfstartview=%
+ % ]{hyperref}
+
+
+
+
 %
 %\usepackage[pdftex,colorlinks=false,linkcolor=red,citecolor=red,%
 % anchorcolor=red,urlcolor=red,bookmarks=true,%
 % bookmarksopen=true,bookmarksopenlevel=0,plainpages=false%
 % bookmarksnumbered=true,hyperindex=false,pdfstartview=%
 % ]{hyperref}
-\fi
+%\fi
 
-
+%% we need this to set up the bibliography PDF bookmarks on top level rather
+%% than as part of appendix
+\usepackage{bookmark}
 
 
 %% Fancy chapters
@@ -133,3 +143,48 @@
 %\bibliographystyle{styles/bauermaNum}
 %\bibliographystyle{alpha}
 \bibliographystyle{plain}
+
+
+
+
+%% not sure what they do and if I need them:
+% \usepackage{soul}
+% \usepackage{wrapfig}
+%\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+%\usepackage{textcomp}
+%\usepackage{marvosym}
+%\usepackage{wasysym}
+%\usepackage{latexsym}
+%\usepackage{amssymb}
+
+
+% \hypersetup{
+%   pdfkeywords={},
+%   pdfsubject={},
+%   pdfcreator={Emacs Org-mode version 7.8.03}}
+
+\usepackage{xspace}
+\xspaceaddexceptions{]\}}
+
+
+%% remove comment for final version
+%\newcommand{\final}{}
+
+\ifx\final\undefined
+
+\usepackage[firstpage]{draftwatermark}
+\SetWatermarkLightness{0.5}
+\SetWatermarkScale{5.0}
+
+\fi
+
+
+\addtokomafont{caption}{\small}
+\addtokomafont{captionlabel}{\small\bfseries}
+
+\usepackage{chngcntr}
+\counterwithout{footnote}{chapter}
+
+
+%\usepackage{subcaption}

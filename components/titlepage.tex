@@ -2,63 +2,61 @@
 % Included by MAIN.TEX
 
 
-%--------------------------------------------------
+% --------------------------------------------------
 % The title page
-%--------------------------------------------------
+% --------------------------------------------------
 
 % correct BCOR - undo at the end !!!
-\def\bcorcor{0.15cm}
-\addtolength{\hoffset}{\bcorcor}
+% \def\bcorcor{0.15cm}
+% \addtolength{\hoffset}{\bcorcor}
 
 \thispagestyle{empty}
 
- \vspace{10mm}
+\vspace{7mm}
 \begin{center}
-	       \oTUM{4cm}
-	   
-	   \vspace{5mm}     
-	   \huge FAKULT{\"A}T F{\"U}R INFORMATIK\\ 
-	   \vspace{0.5cm}
-	 \large DER TECHNISCHEN UNIVERSIT{\"A}T M{\"U}NCHEN\\
-        
-	\end{center}
-		
+  \oTUM{4cm}
 
-\vspace{10mm}
+  \vspace{5mm}
+  \huge FAKULT{\"A}T F{\"U}R INFORMATIK\\
+  \vspace{0.5cm}
+  \large DER TECHNISCHEN UNIVERSIT{\"A}T M{\"U}NCHEN
+\end{center}
+\vspace{7mm}
 \begin{center}
 
-   {\Large \doctype}
+  {\Large \thedoctype}
+
+  \vspace{7mm}
+
+  {\LARGE \thetitle}\\
+
+  \vspace{5mm}
+
+  {\LARGE  \thetitleGer}\\
 
   \vspace{10mm}
-  
-  {\LARGE \title}\\
-  
-  
-  \vspace{10mm}
-  
-  
-  {\LARGE  \titleGer}\\
-  
-  
+
+  % \hfill
+  \begin{tabular}{ll}
+    \Large Author:     & \Large \theauthor \\[2mm]
+    \Large Supervisor:    & \Large \thesupervisor\textsuperscript{1}\\[2mm]
+    \Large Advisor:	& \Large \theadvisor\textsuperscript{2}\\[2mm]
+    \Large Date:       & \Large \thedate
+  \end{tabular}
+
+  \vspace{5mm}
+
+  % \begin{figure}[h!]
+  %   \centering
+  %   \includegraphics[width=4cm]{styles/informat.png}
+  % \end{figure}
+
   \vspace{10mm}
 
-    %\hfill
-    \begin{tabular}{ll}
-	   \Large Author:     & \Large \author \\[2mm]
-	   \Large Supervisor:    & \Large Prof. Dr. However Wasit \\[2mm]				
-	   \Large Advisor:	& \Large Dipl.Inf. Whoever Didit\\[2mm]
-	   \Large Date:       & \Large August 15, 2006
-	 \end{tabular}
-	 
-	 \vspace{5mm}
-	 
-	 \begin{figure}[h!]
-  \centering
-   \includegraphics[width=4cm]{styles/informat.png}
-  \end{figure}
-   
+  \textsuperscript{1}Technische Universit{\"a}t M{\"u}nchen\\
+  \textsuperscript{2}Bosch Research and Technology Center North America
 
 \end{center}
 
 % undo BCOR correction
-\addtolength{\hoffset}{\bcorcor}
+% \addtolength{\hoffset}{\bcorcor}
