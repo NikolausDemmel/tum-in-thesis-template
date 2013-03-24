@@ -1,0 +1,12 @@
+/main.pdf
+/auto/
+
+*.glo
+*.aux
+*.toc
+*.out
+*.log
+*.idx
+*.blg
+*.bbl
+
